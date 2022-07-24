@@ -3,7 +3,7 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 
 
-class DevasecSpiderSpider(CrawlSpider):
+class DevasecSpider(CrawlSpider):
     name = 'devasec_spider'
     # to also see error status codes
     custom_settings = {'handle_httpstatus_all': True}
@@ -11,8 +11,8 @@ class DevasecSpiderSpider(CrawlSpider):
     allowed_domains = []
     # definding the internal domain so we can use localhost
     # internal_domain = "devasec.org"
-    internal_domain = ["localhost:31337"]
     # start_urls = ['https://www.devasec.org/']
+    internal_domain = ["localhost:31337"]
     start_urls = ['http://localhost:31337/']
 
     rules = (
@@ -24,7 +24,6 @@ class DevasecSpiderSpider(CrawlSpider):
                 attrs='href',
                 unique=True
                 ),
-            callback='parse_item',
             follow=True
         ),
         Rule(
@@ -34,7 +33,6 @@ class DevasecSpiderSpider(CrawlSpider):
                 attrs='href',
                 unique=True
                 ),
-            callback='parse_item',
             follow=True
         ),
         Rule(
@@ -44,7 +42,6 @@ class DevasecSpiderSpider(CrawlSpider):
                 attrs='src',
                 unique=True
                 ),
-            callback='parse_item',
             follow=True
         ),
         # do not follow links externally
@@ -54,7 +51,6 @@ class DevasecSpiderSpider(CrawlSpider):
                 attrs='href',
                 unique=True
                 ),
-            callback='parse_item',
             follow=False
         ),
         Rule(
@@ -63,7 +59,6 @@ class DevasecSpiderSpider(CrawlSpider):
                 attrs='href',
                 unique=True
                 ),
-            callback='parse_item',
             follow=False
         ),
         Rule(
@@ -72,15 +67,6 @@ class DevasecSpiderSpider(CrawlSpider):
                 attrs='src',
                 unique=True
                 ),
-            callback='parse_item',
             follow=False
         ),
     )
-
-    def parse_item(self, response):
-        item = {}
-        item['url'] = response.url
-        #item['domain_id'] = response.xpath('//input[@id="sid"]/@value').get()
-        #item['name'] = response.xpath('//div[@id="name"]').get()
-        #item['description'] = response.xpath('//div[@id="description"]').get()
-        return item

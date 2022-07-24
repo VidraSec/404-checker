@@ -31,6 +31,9 @@ class DevasecCrawlerSpiderMiddleware:
     def process_spider_output(self, response, result, spider):
         # Called with the results returned from the Spider, after
         # it has processed the response.
+        if (response.status != 200):
+            spider.logger.warn(str(response.status) + " - " + response.url)
+            print(str(response.status) + " - " + response.url)
 
         # Must return an iterable of Request, or item objects.
         for i in result:
