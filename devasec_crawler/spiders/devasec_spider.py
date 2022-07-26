@@ -10,8 +10,6 @@ class DevasecSpider(CrawlSpider):
     # we allow all domains by default, later we only follow links internally
     allowed_domains = []
     # definding the internal domain so we can use localhost
-    # internal_domain = "devasec.org"
-    # start_urls = ['https://www.devasec.org/']
     internal_domain = ["localhost:31337"]
     start_urls = ['http://localhost:31337/']
 
