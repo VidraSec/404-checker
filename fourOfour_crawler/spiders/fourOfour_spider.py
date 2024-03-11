@@ -3,15 +3,15 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 
 
-class 404Spider(CrawlSpider):
-    name = '404_spider'
+class fourOfourSpider(CrawlSpider):
+    name = 'fourOfour_spider'
     # to also see error status codes
     custom_settings = {'handle_httpstatus_all': True}
     # we allow all domains by default, later we only follow links internally
     allowed_domains = []
     # defining the internal domain so we can use localhost
-    internal_domain = ["localhost:1337"]
-    start_urls = ['http://localhost:1337/']
+    internal_domain = ["localhost:1313"]
+    start_urls = ['http://localhost:1313/']
 
     rules = (
         # follow links internally

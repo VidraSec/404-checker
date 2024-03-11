@@ -25,11 +25,11 @@ Example for Ubuntu taken from [Dockerfile](Dockerfile). Of course better use a `
 
 ## How to run
 
-Adapt the settings in [devasec_spider.py](devasec_crawler/spiders/devasec_spider.py):
+Adapt the settings in [fourOfour_spider.py](fourOfour_crawler/spiders/fourOfour_spider.py):
 
 ``` python
-internal_domain = ["localhost:31337"]
-start_urls = ['http://localhost:31337/']
+internal_domain = ["localhost:1313"]
+start_urls = ['http://localhost:1313/']
 ```
 
 And run
@@ -43,7 +43,7 @@ $ python start-spider.py
 ## Example GitHub workflow file
 
 ``` yaml
-name: 404-check
+name: fourOfour-check
 
 on:
   push:
@@ -53,7 +53,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
 
