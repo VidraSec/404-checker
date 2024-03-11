@@ -3,7 +3,7 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 
 
-class fourOfourSpider(CrawlSpider):
+class FourOfourSpider(CrawlSpider):
     name = 'fourOfour_spider'
     # to also see error status codes
     custom_settings = {'handle_httpstatus_all': True}
@@ -12,6 +12,10 @@ class fourOfourSpider(CrawlSpider):
     # defining the internal domain so we can use localhost
     internal_domain = ["localhost:1313"]
     start_urls = ['http://localhost:1313/']
+
+    # ignore LinkedIn and Twitter/X
+    # they respond with wrong error codes
+    reply_code_wrong = ("linkedin.com", "twitter.com", "x.com")
 
     rules = (
         # follow links internally
@@ -65,7 +69,8 @@ class fourOfourSpider(CrawlSpider):
             LinkExtractor(
                 tags='a',
                 attrs='href',
-                unique=True
+                unique=True,
+                deny_domains=reply_code_wrong,
                 ),
             follow=False
         ),
@@ -73,7 +78,8 @@ class fourOfourSpider(CrawlSpider):
             LinkExtractor(
                 tags='link',
                 attrs='href',
-                unique=True
+                unique=True,
+                deny_domains=reply_code_wrong,
                 ),
             follow=False
         ),
@@ -81,7 +87,8 @@ class fourOfourSpider(CrawlSpider):
             LinkExtractor(
                 tags='script',
                 attrs='src',
-                unique=True
+                unique=True,
+                deny_domains=reply_code_wrong,
                 ),
             follow=False
         ),
@@ -89,7 +96,8 @@ class fourOfourSpider(CrawlSpider):
             LinkExtractor(
                 tags='img',
                 attrs='src',
-                unique=True
+                unique=True,
+                deny_domains=reply_code_wrong,
                 ),
             follow=False
         ),
@@ -97,7 +105,8 @@ class fourOfourSpider(CrawlSpider):
             LinkExtractor(
                 tags='iframe',
                 attrs='src',
-                unique=True
+                unique=True,
+                deny_domains=reply_code_wrong,
                 ),
             follow=False
         ),
