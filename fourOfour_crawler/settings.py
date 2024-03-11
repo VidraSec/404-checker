@@ -45,7 +45,7 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
-   'fourOfour_crawler.middlewares.fourOfourCrawlerSpiderMiddleware': 543,
+   'fourOfour_crawler.middlewares.FourOfourCrawlerSpiderMiddleware': 543,
 }
 
 # Enable or disable downloader middlewares
