@@ -42,26 +42,49 @@ $ python start-spider.py
 
 ## Example GitHub workflow file
 
-``` yaml
-name: fourOfour-check
+`.github/workflows/hugo-build.yml`
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
+``` yaml
+name: Hugo Build and 404 check
+
+on: [push, pull_request]
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          path: website-hugo
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      - name: Test
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Build
         run: |
-          sudo apt-get -y update
+          cd website-hugo
+          hugo --minify
+
+      - uses: actions/checkout@v3
+        with:
+          path: 404-checker
+          repository: VidraSec/404-checker
+
+      - name: 404-Check
+        run: |
+          cd website-hugo
+          hugo server &
+          cd ..
           sudo apt-get install -y python3 python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev
           pip install scrapy
+          cd 404-checker
           chmod +x start-spider.sh
           ./start-spider.sh
 ```
