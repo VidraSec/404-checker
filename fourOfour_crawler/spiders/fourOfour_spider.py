@@ -35,7 +35,8 @@ class FourOfourSpider(CrawlSpider):
                 allow_domains=internal_domain,
                 tags='link',
                 attrs='href',
-                unique=True
+                unique=True,
+                deny_extensions=set(), # else defaults to scrapy.linkextractors.IGNORED_EXTENSIONS see: https://stackoverflow.com/a/50165891/492704
                 ),
             follow=True
         ),
@@ -44,7 +45,9 @@ class FourOfourSpider(CrawlSpider):
                 allow_domains=internal_domain,
                 tags='script',
                 attrs='src',
-                unique=True
+                unique=True,
+                deny_extensions=set(), # else defaults to scrapy.linkextractors.IGNORED_EXTENSIONS see: https://stackoverflow.com/a/50165891/492704
+
                 ),
             follow=True
         ),
@@ -53,7 +56,8 @@ class FourOfourSpider(CrawlSpider):
                 allow_domains=internal_domain,
                 tags='img',
                 attrs='src',
-                unique=True
+                unique=True,
+                deny_extensions=set(), # else defaults to scrapy.linkextractors.IGNORED_EXTENSIONS see: https://stackoverflow.com/a/50165891/492704
                 ),
             follow=True
         ),
@@ -82,6 +86,7 @@ class FourOfourSpider(CrawlSpider):
                 attrs='href',
                 unique=True,
                 deny_domains=reply_code_wrong,
+                deny_extensions=set(), # else defaults to scrapy.linkextractors.IGNORED_EXTENSIONS see: https://stackoverflow.com/a/50165891/492704
                 ),
             follow=False
         ),
@@ -91,6 +96,7 @@ class FourOfourSpider(CrawlSpider):
                 attrs='src',
                 unique=True,
                 deny_domains=reply_code_wrong,
+                deny_extensions=set(), # else defaults to scrapy.linkextractors.IGNORED_EXTENSIONS see: https://stackoverflow.com/a/50165891/492704
                 ),
             follow=False
         ),
@@ -100,6 +106,7 @@ class FourOfourSpider(CrawlSpider):
                 attrs='src',
                 unique=True,
                 deny_domains=reply_code_wrong,
+                deny_extensions=set(), # else defaults to scrapy.linkextractors.IGNORED_EXTENSIONS see: https://stackoverflow.com/a/50165891/492704
                 ),
             follow=False
         ),
