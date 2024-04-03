@@ -7,6 +7,8 @@ class FourOfourSpider(CrawlSpider):
     name = 'fourOfour_spider'
     # to also see error status codes
     custom_settings = {'handle_httpstatus_all': True}
+    # set the download timeout to 5 seconds
+    download_timeout = 5
     # we allow all domains by default, later we only follow links internally
     allowed_domains = []
     # defining the internal domain so we can use localhost
