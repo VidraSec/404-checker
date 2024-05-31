@@ -14,7 +14,7 @@ NEWSPIDER_MODULE = 'fourOfour_crawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'fourOfour_crawler (+http://www.yourdomain.com)'
+USER_AGENT = 'fourOfour_crawler (+http://www.vidrasec.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
