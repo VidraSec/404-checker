@@ -88,3 +88,7 @@ jobs:
           chmod +x start-spider.sh
           ./start-spider.sh
 ```
+
+## Misc
+
+[Built by VidraSec](https://www.vidrasec.com)
