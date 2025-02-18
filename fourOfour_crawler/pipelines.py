@@ -8,6 +8,6 @@
 from itemadapter import ItemAdapter
 
 
-class DevasecCrawlerPipeline:
+class fourOfourCrawlerPipeline:
     def process_item(self, item, spider):
         return item

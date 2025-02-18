@@ -1,4 +1,4 @@
-# Scrapy settings for devasec_crawler project
+# Scrapy settings for fourOfour_crawler project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'devasec_crawler'
+BOT_NAME = 'fourOfour_crawler'
 
-SPIDER_MODULES = ['devasec_crawler.spiders']
-NEWSPIDER_MODULE = 'devasec_crawler.spiders'
+SPIDER_MODULES = ['fourOfour_crawler.spiders']
+NEWSPIDER_MODULE = 'fourOfour_crawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'devasec_crawler (+http://www.yourdomain.com)'
+USER_AGENT = 'fourOfour_crawler (+http://www.vidrasec.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -45,13 +45,13 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
-   'devasec_crawler.middlewares.DevasecCrawlerSpiderMiddleware': 543,
+   'fourOfour_crawler.middlewares.FourOfourCrawlerSpiderMiddleware': 543,
 }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'devasec_crawler.middlewares.DevasecCrawlerDownloaderMiddleware': 543,
+#    'fourOfour_crawler.middlewares.fourOfourCrawlerDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -63,7 +63,7 @@ SPIDER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'devasec_crawler.pipelines.DevasecCrawlerPipeline': 300,
+#    'fourOfour_crawler.pipelines.fourOfourCrawlerPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -86,3 +86,6 @@ SPIDER_MIDDLEWARES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# to remove the warning see: https://docs.scrapy.org/en/latest/topics/request-response.html
+REQUEST_FINGERPRINTER_IMPLEMENTATION = '2.7'

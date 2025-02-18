@@ -6,7 +6,7 @@
 import scrapy
 
 
-class DevasecCrawlerItem(scrapy.Item):
+class fourOfourCrawlerItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
