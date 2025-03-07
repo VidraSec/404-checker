@@ -17,7 +17,7 @@ class FourOfourSpider(CrawlSpider):
 
     # ignore LinkedIn and Twitter/X
     # they respond with wrong error codes
-    reply_code_wrong = ("linkedin.com", "twitter.com", "x.com", "ec.europa.eu")
+    reply_code_wrong = ("linkedin.com", "twitter.com", "x.com", "ec.europa.eu", "udemy.com")
 
     rules = (
         # follow links internally
