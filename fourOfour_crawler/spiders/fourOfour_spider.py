@@ -16,7 +16,7 @@ class FourOfourSpider(CrawlSpider):
     start_urls = ['http://localhost:1313/']
 
     # to ignore domains that respond with wrong error codes
-    reply_code_wrong = ()
+    reply_code_wrong = ("linkedin.com", "udemy.com", "medium.com", "research.ifcr.dk")
 
     rules = (
         # follow links internally
