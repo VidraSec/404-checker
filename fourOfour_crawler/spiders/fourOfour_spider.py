@@ -16,7 +16,7 @@ class FourOfourSpider(CrawlSpider):
     start_urls = ['http://localhost:1313/']
 
     # to ignore domains that respond with wrong error codes
-    reply_code_wrong = ("linkedin.com", "udemy.com", "medium.com", "research.ifcr.dk", "shodan.io", "praetorian.com")
+    reply_code_wrong = ("linkedin.com", "udemy.com", "medium.com", "research.ifcr.dk", "shodan.io", "praetorian.com", "pingcastle.com")
 
     def start_requests(self):
         # Start from homepage (discovers linked pages)
