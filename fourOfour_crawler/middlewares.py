@@ -29,15 +29,15 @@ class FourOfourCrawlerSpiderMiddleware:
         # Should return None or raise an exception.
         return None
 
-    def process_spider_output(self, response, result, spider):
+    async def process_spider_output(self, response, result, spider):
         # Called with the results returned from the Spider, after
         # it has processed the response.
         if not (200 <= response.status < 300):
             spider.logger.warn(str(response.status) + " - " + response.url)
             print(str(response.status) + " - " + response.url)
 
-        # Must return an iterable of Request, or item objects.
-        for i in result:
+        # Must return an async iterable of Request, or item objects.
+        async for i in result:
             yield i
 
     def process_spider_exception(self, response, exception, spider):
